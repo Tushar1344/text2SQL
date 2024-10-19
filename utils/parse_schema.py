@@ -87,7 +87,7 @@ def process_metrics(metrics: list) -> str:
         metric_lines.append("Metrics:")
         for metric in metrics:
             metric_lines.append(f"  - Name: {metric['name']}")
-            metric_lines.append(f"    Expression: {metric['expression']}")
+            metric_lines.append(f"    Expression: {metric['calculation']}")
             if 'description' in metric:
                 metric_lines.append(f"    Description: {metric['description']}")
             metric_lines.append("")  # Newline between metrics

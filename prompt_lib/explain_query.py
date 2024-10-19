@@ -24,8 +24,8 @@ def explain_sql_query(sql_query, user_question, api_key):
     response = client.chat.completions.create(
         model='gpt-4o-mini',
         messages=messages,
-        max_tokens=200,
-        temperature=0.5,
+        max_tokens=512,
+        temperature=0.2,
         # stop=["\n\n"]
     )
     explanation = response.choices[0].message.content.strip()

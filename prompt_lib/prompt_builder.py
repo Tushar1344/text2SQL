@@ -17,7 +17,7 @@ def generate_prompt(schema_representation, user_question, api_key):
     """
 
     # Define the user prompt
-    user_prompt = f"""
+    user_prompt = f"""\
     Database Schema and Metrics:
         {schema_representation}
 
