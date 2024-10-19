@@ -1,0 +1,62 @@
+metrics:
+- calculation: SUM(sales.quantity * products.price)
+  description: Total sales amount across all transactions
+  name: total_sales
+- calculation: AVG(sales.quantity * products.price)
+  description: Average value of an order
+  name: average_order_value
+- calculation: SUM(sales.quantity)
+  description: Total quantity of products sold
+  name: total_quantity_sold
+tables:
+- columns:
+  - data_type: integer
+    name: sale_id
+    primary_key: true
+  - data_type: integer
+    foreign_key:
+      column: product_id
+      table: products
+    name: product_id
+  - data_type: integer
+    foreign_key:
+      column: customer_id
+      table: customers
+    name: customer_id
+  - data_type: integer
+    name: quantity
+  - data_type: date
+    name: sale_date
+  - data_type: decimal
+    description: Total amount for the sale (quantity * unit price)
+    name: sale_amount
+  dimensions:
+  - scd_type: 1
+    type: time
+  name: sales
+  type: fact
+- columns:
+  - data_type: integer
+    name: product_id
+    primary_key: true
+  - data_type: string
+    name: product_name
+  - data_type: string
+    name: category
+  - data_type: decimal
+    description: Unit price of the product
+    name: price
+  name: products
+  scd_type: 2
+  type: dimension
+- columns:
+  - data_type: integer
+    name: customer_id
+    primary_key: true
+  - data_type: string
+    name: customer_name
+  - data_type: string
+    name: region
+  name: customers
+  scd_type: 1
+  type: dimension
